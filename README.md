@@ -2,7 +2,7 @@
 
 ## To get a sourcecode of this site you need:
 1. Install git
-2. Run **git clone https://github.com/VovaLem/aniva-tea.git** or open https://github.com/VovaLem/aniva-tea and download ZIP
+2. Run **git clone https://github.com/VovaLem/anivatea.git** or open https://github.com/VovaLem/anivatea and download ZIP
 
 ## To run a local copy of site you need:
 1. Create a folder with name **dist**
