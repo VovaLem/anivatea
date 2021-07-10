@@ -21,7 +21,8 @@ const filesPath = {
         fonts: "src/fonts/**/*.*",
         libs: "src/libs/**/*.*",
         favicon: "src/favicon.ico",
-        api: "src/api/**/*.*"
+        api: "src/api/**/*.*",
+        readme: "README.md"
     },
     build: {
         html: "dist/",
@@ -31,7 +32,8 @@ const filesPath = {
         fonts: "dist/fonts",
         libs: "dist/libs/",
         favicon: "dist/",
-        api: "dist/api/"
+        api: "dist/api/",
+        readme: "dist/"
     },
     watch: {
         html: "src/**/*.html",
@@ -41,10 +43,11 @@ const filesPath = {
         fonts: "src/fonts/**/*.*",
         libs: "src/libs/**/*.*",
         favicon: "src/favicon.ico",
-        api: "src/api/**/*.*"
+        api: "src/api/**/*.*",
+        readme: ""
     },
     clean: {
-        all: "dist/**/*.*",
+        all: "dist/**/*",
         html: "dist/*.html",
         img: "dist/img/**/*.*",
         fonts: "dist/fonts/**/*.*",
@@ -128,6 +131,11 @@ function buildAPI() {
         .pipe(gulp.dest(filesPath.build.api));
 }
 
+function buildReadme() {
+    return gulp.src(filesPath.src.readme)
+        .pipe(gulp.dest(filesPath.build.readme));
+}
+
 function watch() {
     browserSync.init({
         proxy: "anivatea.localhost"
@@ -140,6 +148,7 @@ function watch() {
     gulp.watch(filesPath.watch.libs, buildLibs);
     gulp.watch(filesPath.watch.favicon, buildFavicon);
     gulp.watch(filesPath.watch.api, buildAPI);
+    gulp.watch(filesPath.src.readme, buildReadme);
 
     let imgWatcher = gulp.watch(filesPath.watch.img, buildImg);
     imgWatcher.on('unlink', function (filepath) {
@@ -152,5 +161,5 @@ function cleanDist(cb) {
     cb();
 }
 
-exports.start = gulp.series(gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI), watch);
-exports.build = gulp.series(cleanDist, gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI));
+exports.start = gulp.series(gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI, buildReadme), watch);
+exports.build = gulp.series(cleanDist, gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI, buildReadme));
