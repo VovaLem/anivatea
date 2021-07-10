@@ -1,73 +1,117 @@
 'use strict';
 
 $(function() {
-    $("#certs").on("click", function() {
-        $.fancybox.open([
-            {
-                src: "/img/certs/1.png"
-            }, {
-                src: "/img/certs/2.png"
-            }
-        ], {
-            loop: 1
-        })
+    $(".header__mobile-btn").on("click", function() {
+        $(".mobile-menu").toggleClass("active");
+    });
+    
+    $(".mobile-menu__close").on("click", function() {
+        $(".mobile-menu").toggleClass("active");
     });
 
-    let cur = 0;
-    setInterval(function() {
-        let mainSlide = $("#mainSlide");
-        let secondarySlide1 = $("#secondarySlide1");
-        let secondarySlide2 = $("#secondarySlide2");
-        let secondarySlide3 = $("#secondarySlide3");
+    $("#certs img").on("click", function() {
+        $.fancybox.open([{
+            src: "/img/certs/1.png"
+        }, {
+            src: "/img/certs/2_1.png"
+        }, {
+            src: "/img/certs/2_2.png"
+        }], {
+            loop: 0
+        });
+    });
 
-        let sliderImages = productImages;
+    $("#contact-form__phone").mask("+375 (99) 999-99-99");
 
-        cur++;
-        if(cur > sliderImages.length - 1) {
-            cur = 0;
+    let header = $(".header");
+    let headerHeight = header.outerHeight();
+
+    $(".container").scroll(function () {
+        if ($(this).scrollTop() > 1) {
+            header.addClass("header--fixed");
+            $(".container").css({
+                paddingTop: headerHeight + "px"
+            });
+        } else {
+            header.removeClass("header--fixed");
+            $(".container").css({
+                paddingTop: 0
+            });
         }
+    });
 
-        $(mainSlide).toggleClass("slider-images__main-img--fade");
-        setTimeout(function() {
-            $(mainSlide).attr("src", sliderImages[cur]);
-            $(mainSlide).parent().attr("href", sliderImages[cur]);
-            $(mainSlide).toggleClass("slider-images__main-img--fade");
-        }, 300);
+    $(".header__link a").on("click", function() {
+        let scrollTo = $(this).attr("href");
 
-        let buff1 = cur + 1;
-        if(buff1 > sliderImages.length - 1) {
-            buff1 -= sliderImages.length;
-        }
+        $('.container').animate({
+            scrollTop: $('.container').scrollTop() + $(`${scrollTo}`).offset().top - headerHeight
+        }, 1000);
+    });
 
-        $(secondarySlide1).toggleClass("slider-images__image-img--fade");
-        setTimeout(function() {
-            $(secondarySlide1).attr("src", sliderImages[buff1]);
-            $(secondarySlide1).parent().attr("href", sliderImages[buff1]);
-            $(secondarySlide1).toggleClass("slider-images__image-img--fade");
-        }, 300);
+    $(".mobile-menu__link a").on("click", function() {
+        let scrollTo = $(this).attr("href");
 
-        let buff2 = cur + 2;
-        if(buff2 > sliderImages.length - 1) {
-            buff2 -= sliderImages.length;
-        }
+        $(".mobile-menu").removeClass("active");
 
-        $(secondarySlide2).toggleClass("slider-images__image-img--fade");
-        setTimeout(function() {
-            $(secondarySlide2).attr("src", sliderImages[buff2]);
-            $(secondarySlide2).parent().attr("href", sliderImages[buff2]);
-            $(secondarySlide2).toggleClass("slider-images__image-img--fade");
-        }, 300);
+        $('.container').animate({
+            scrollTop: $('.container').scrollTop() + $(`${scrollTo}`).offset().top - headerHeight
+        }, 1000);
+    });
+    
+    $(".contact-form__form").on("submit", function(e) {
+        e.preventDefault();
 
-        let buff3 = cur + 3;
-        if(buff3 > sliderImages.length - 1) {
-            buff3 -= sliderImages.length;
-        }
+        grecaptcha.ready(function () {
+            grecaptcha
+              .execute("6LdnRF4bAAAAAEAdZtEjWbvvVUGlp0wUVvFQtiEZ", {
+                action: "contact",
+              })
+              .then(function (token) {
+                    var recaptchaResponse = document.getElementById("recaptchaResponse");
+                    recaptchaResponse.value = token;
 
-        $(secondarySlide3).toggleClass("slider-images__image-img--fade");
-        setTimeout(function() {
-            $(secondarySlide3).attr("src", sliderImages[buff3]);
-            $(secondarySlide3).parent().attr("href", sliderImages[buff3]);
-            $(secondarySlide3).toggleClass("slider-images__image-img--fade");
-        }, 300);
-    }, 5000);
+                    $(".form-alert").removeClass("active");
+        
+                    let name = $("#contact-form__name").val();
+                    let phone = $("#contact-form__phone").val();
+                    let mail = $("#contact-form__email").val();
+
+                    if(name != "" && phone != "" && mail != "") {
+                        $("#form-alert__wait").addClass("active");
+
+                        $.ajax({
+                            url: '/api/contact/',
+                            method: 'post',
+                            dataType: 'json',
+                            data: {
+                                name: name,
+                                phone: phone,
+                                mail: mail,
+                                recaptchaResponse: $("#recaptchaResponse").val()
+                            },
+                            success: function(data) {
+                                $("#form-alert__wait").removeClass("active");
+                                if(data.ok) {
+                                    $("#form-alert__success").addClass("active");
+
+                                    $("#contact-form__name").val("");
+                                    $("#contact-form__phone").val("");
+                                    $("#contact-form__email").val("");
+                                }else if(!data.email) {
+                                    $("#form-alert__email-error").addClass("active");
+                                }else{
+                                    $("#form-alert__backend-error").addClass("active");
+                                }
+                            }
+                        });
+                    }else{
+                        $("#form-alert__input-empty-error").addClass("active");
+                    }
+              })
+        });
+    });
+
+    $(".form-alert__close").on("click", function() {
+        $(this).parent().parent().removeClass("active");
+    });
 });

@@ -5,7 +5,6 @@ const rigger = require("gulp-rigger");
 const cssmin = require("gulp-cssmin");
 const jsmin = require("gulp-jsmin");
 const sass = require("gulp-sass");
-const sourcemaps = require("gulp-sourcemaps");
 const imagemin = require("gulp-imagemin");
 const browserSync = require("browser-sync");
 const { reload } = require("browser-sync");
@@ -19,40 +18,43 @@ const filesPath = {
         css: "src/scss/style.scss",
         js: "src/js/main.js",
         img: "src/img/**/*.*",
-        fonts: "src/fonts/**/*.*"
+        fonts: "src/fonts/**/*.*",
+        libs: "src/libs/**/*.*",
+        favicon: "src/favicon.ico",
+        api: "src/api/**/*.*"
     },
     build: {
         html: "dist/",
         css: "dist/css",
         js: "dist/js/",
         img: "dist/img/",
-        fonts: "dist/fonts"
+        fonts: "dist/fonts",
+        libs: "dist/libs/",
+        favicon: "dist/",
+        api: "dist/api/"
     },
     watch: {
         html: "src/**/*.html",
         css: "src/scss/**/*.scss",
         js: "src/js/**/*.js",
         img: "src/img/**/*.*",
-        fonts: "src/fonts/**/*.*"
+        fonts: "src/fonts/**/*.*",
+        libs: "src/libs/**/*.*",
+        favicon: "src/favicon.ico",
+        api: "src/api/**/*.*"
     },
     clean: {
         all: "dist/**/*.*",
         html: "dist/*.html",
         img: "dist/img/**/*.*",
-        fonts: "dist/fonts/**/*.*"
+        fonts: "dist/fonts/**/*.*",
+        libs: "dist/libs/**/*.*"
     }
 }
-
-browserSync.init({
-    server: {
-        baseDir: "./dist"
-    }
-});
 
 function buildHTML() {
     del.sync(filesPath.clean.html);
     return gulp.src(filesPath.src.html)
-        .pipe(sourcemaps.init())
         .pipe(rigger())
         .pipe(gulp.dest(filesPath.build.html))
         .pipe(reload({
@@ -63,11 +65,9 @@ function buildHTML() {
 function buildCSS() {
     return gulp.src(filesPath.src.css)
         .pipe(rigger())
-        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(cssmin())
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest(filesPath.build.css))
         .pipe(reload({
             stream: true
@@ -77,12 +77,10 @@ function buildCSS() {
 function buildJS() {
     return gulp.src(filesPath.src.js)
         .pipe(rigger())
-        .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['@babel/env']
         }))
         .pipe(jsmin())
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest(filesPath.build.js))
         .pipe(reload({
             stream: true
@@ -108,23 +106,51 @@ function buildImg() {
         }));
 }
 
+function buildLibs() {
+    del.sync(filesPath.clean.libs);
+    return gulp.src(filesPath.src.libs)
+        .pipe(gulp.dest(filesPath.build.libs))
+        .pipe(reload({
+            stream: true
+        }));
+}
+
+function buildFavicon() {
+    return gulp.src(filesPath.src.favicon)
+        .pipe(gulp.dest(filesPath.build.favicon))
+        .pipe(reload({
+            stream: true
+        }));
+}
+
+function buildAPI() {
+    return gulp.src(filesPath.src.api)
+        .pipe(gulp.dest(filesPath.build.api));
+}
+
 function watch() {
+    browserSync.init({
+        proxy: "anivatea.localhost"
+    });
+
     gulp.watch(filesPath.watch.html, buildHTML);
     gulp.watch(filesPath.watch.css, buildCSS);
     gulp.watch(filesPath.watch.js, buildJS);
-    let imgWatcher = gulp.watch(filesPath.watch.img, buildImg);
     gulp.watch(filesPath.watch.fonts, buildFonts);
+    gulp.watch(filesPath.watch.libs, buildLibs);
+    gulp.watch(filesPath.watch.favicon, buildFavicon);
+    gulp.watch(filesPath.watch.api, buildAPI);
 
+    let imgWatcher = gulp.watch(filesPath.watch.img, buildImg);
     imgWatcher.on('unlink', function (filepath) {
-        let filePathFromSrc = path.relative(path.resolve('src'), filepath);
-        let destFilePath = path.resolve('dist', filePathFromSrc);
-        del.sync(destFilePath);
+        del.sync(["dist\\" + path.relative(path.resolve('src'), filepath)]);
     });
 }
 
-function cleanDist() {
-	return del(filesPath.clean.all, { force: true });
+function cleanDist(cb) {
+	del.sync([filesPath.clean.all], { force: true });
+    cb();
 }
 
-exports.start = gulp.series(gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg), watch);
-exports.build = gulp.series(gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg));
+exports.start = gulp.series(gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI), watch);
+exports.build = gulp.series(cleanDist, gulp.parallel(buildHTML, buildCSS, buildJS, buildFonts, buildImg, buildLibs, buildFavicon, buildAPI));

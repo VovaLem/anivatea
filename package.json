@@ -24,7 +24,6 @@
     "gulp-jsmin": "^0.1.5",
     "gulp-newer": "^1.4.0",
     "gulp-rigger": "^0.5.8",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^3.0.0"
+    "gulp-sass": "^4.1.0"
   }
 }

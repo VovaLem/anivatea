@@ -1,197 +1,577 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/libs/fancybox/jquery.fancybox.min.css">
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdnRF4bAAAAAEAdZtEjWbvvVUGlp0wUVvFQtiEZ"></script>
 
     <title>Anivatea</title>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="header__top">
-                <div class="header__logo">
-                    <a href="/" class="header__logo-link">
-                        <img src="/img/logo.png" alt="" class="header__logo-img">
-                    </a>
-                </div>
-                <div class="header__roof">
-                    <img src="/img/roof.png" alt="" class="header__roof-img">
-                    <div class="header__roof-leaf">
-                        <img src="/img/leaf1.png" alt="">
-                    </div>
-                </div>
-                <div class="header__description">
-                    <h1 class="header__title">Оригинальные китайские чаи</h1>
-                    <div class="header__content">
-                        <p class="header__content-part">Вырощенные и собраны по древним традициям поднебесной, сохранив в себе яркий, насыщенный вкус с множеством целебных свойст.</p>
-                        <p class="header__content-part">Китайский чай является мощнейшим антиоксидантом, он помогает справиться организму с неблагоприятным воздействием окружающей среды и замедляет процесс старения.</p>
-                        <p class="header__content-part">
-                            <span>Мы привезли вам чай который буквально творит чудеса!</span>
-                            <span class="header__content-part-row">Чтобы Вы, были</span>
-                            <span>Здоровыми, Молодыми, Счастливыми и Энергичными!</span>
-                        </p>
-                    </div>
-                    <div class="header__leafs">
-                        <div class="header__leaf1">
-                            <img src="/img/leaf2.png" alt="">
-                        </div>
-                        <div class="header__leaf2">
-                            <img src="/img/leaf3.png" alt="">
-                        </div>
-                    </div>
-                </div>
+        <header class="header">
+            <div class="header__mobile-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__links">
+                    <li class="header__link">
+                        <a href="#about">О нас</a>
+                    </li>
+                    <li class="header__link">
+                        <a href="#products">Ассортимент</a>
+                    </li>
+                    <li class="header__link">
+                        <a href="#contact">Контакты</a>
+                    </li>
+                    <li class="header__link">
+                        <a href="#order">Заказать</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__phone">
+                <a href="tel:+375 33 347-75-88">+375 (33) 347-75-88</a>
+            </div>
+            <div class="header__leaf">
+                <img src="/img/leafs/1.png" alt="">
             </div>
         </header>
-
-        <div class="products">
-            <div class="products__row">
-                <div class="products__imgs">
-                    <div class="products__product">
-                        <a href="/img/products/1/1.png" data-fancybox="product_1">
-                            <img src="/img/products/1/1.png" alt="" class="products__img">
-                        </a>
-                    </div>
-                    <div class="products__product">
-                        <a href="/img/products/1/2.png" data-fancybox="product_1">
-                            <img src="/img/products/1/2.png" alt="" class="products__img">
-                        </a>
-                    </div>
-                    <div class="products__product">
-                        <a href="/img/products/1/3.png" data-fancybox="product_1">
-                            <img src="/img/products/1/3.png" alt="" class="products__img">
-                        </a>
-                    </div>
-                </div>
-                <a href="#" class="products__title">
-                    <span class="products__title-underline">чай зелёный молочный улун с корнем женьшеня</span>
-                </a>
+        <div class="about">
+            <div class="about__logo">
+                <img src="/img/logo.png" alt="">
             </div>
-            <div class="products__row">
-                <div class="products__imgs">
-                    <div class="products__product">
-                        <a href="/img/products/2/1.png" data-fancybox="product_2">
-                            <img src="/img/products/2/1.png" alt="" class="products__img">
-                        </a>
+            <div class="about__roof">
+                <img src="/img/roof.png" alt="" class="about__roof-img">
+                <img src="/img/roof-mobile.png" alt="" class="about__roof-img-mobile">
+
+                <div class="about__leaf1">
+                    <img src="/img/leafs/2.png" alt="">
+                </div>
+            </div>
+            <div class="about__heading" id="about">
+                <h1>Оригинальные китайские чаи</h1>
+            </div>
+            <div class="about__description">
+                <p>
+                    ООО «АНИВА ТРЕЙД» уполномоченный представитель<br>
+                    изготовителя на территории ЕАЭС.<br>
+                    Мы предлагаем уникальный продукт - оригинальные китайские лиственные чаи высокого качества с натуральными ингредиентами, выращенные и собранные по древним традициям поднебесной, сохранив в себе яркий, насыщенный вкус с множеством целебных свойств.
+                </p>
+                <p>
+                    Китайский чай является мощнейшим антиоксидантом, он помогает справиться организму с неблагоприятным воздействием окружающей среды, замедляет процесс старения и укрепляет иммунитет.
+                </p>
+                <p>
+                    Чтобы насладиться настоящим, свежим, истинно китайским чаем,<br>
+                    Вам не обязательно лететь в Китай.<br>
+                    Мы рады предложить Вам чашку ароматного китайского чая<br>
+                    из Поднебесной, прямо здесь и сейчас.
+                </p>
+                <p>
+                    Для Вашего удобного потребления отборный чай упакован<br>
+                    на высокотехнологичном оборудовании в бумажный термостакан<br>
+                    под экомембрану, которая не позволяет листьям всплывать<br>
+                    во время использования.<br>
+                    В комплекте со стаканом - крышка-заварник с клапаном.
+                </p>
+
+                <div class="about__leaf2">
+                    <img src="/img/leafs/3.png" alt="">
+                </div>
+            </div>
+            <div class="about__advantages">
+                <div class="about__advantages-list">
+                    <div class="about__advantages-heading">
+                        <h2>
+                            <span>Наши преимущества:</span>
+                        </h2>
                     </div>
-                    <div class="products__product">
-                        <a href="/img/products/2/2.png" data-fancybox="product_2">
-                            <img src="/img/products/2/2.png" alt="" class="products__img">
-                        </a>
-                    </div>
-                    <div class="products__product">
-                        <a href="/img/products/2/3.png" data-fancybox="product_2">
-                            <img src="/img/products/2/3.png" alt="" class="products__img">
-                        </a>
+                    <ul class="about__advantages-content">
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Уникальная конструкция, не имеющая аналогов в РБ</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Простота заваривания</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Удобство в использовании</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Экомембрана не позволяющая чаинкам всплывать</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Только экологические материалы</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Только натуральные ингредиенты</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Лиственный китайский чай высокого качества</span>
+                        </li>
+                        <li class="about__item">
+                            <div class="about__item-img">
+                                <img src="/img/leafs/list-leaf.png" alt="">
+                            </div>
+                            <span class="about__item-content">Термостакан долго удерживает температуру</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about__advantages-img">
+                    <img src="/img/advantages.png" alt="">
+                </div>
+                <div class="about__leaf3">
+                    <img src="/img/leafs/4.png" alt="">
+                </div>
+            </div>
+            <div class="about__footer">
+                <img src="/img/advantages-text.png" alt="">
+                <div class="about__leaf4">
+                    <img src="/img/leafs/5.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="products" id="products">
+            <p class="products__description">
+                <span>Каждый сорт чая уникальный и особенный. Наши технологи долго подбирали ингредиенты, экспериментировали со вкусами и ароматами, учитывая вкусы нашего потребителя. Дегустировали их для того, чтобы сегодня мы могли предложить Вам самые гармоничные и оригинальные китайские чаи с натуральными ингредиентами.</span>
+                <span class="products__leaf">
+                    <img src="/img/leafs/6.png" alt="">
+                </span>
+            </p>
+            <div class="products__list">
+                <div class="products__item">
+                    <div class="product">
+                        <div class="product__images">
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/1/1.png" alt="">
+                            </div>
+                            <div class="product__image">
+                                <img src="/img/products/1/2.png" alt="">
+                            </div>
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/1/3.png" alt="" style="margin-right: -50px">
+                            </div>
+                        </div>
+                        <div class="product__name">Чай зелёный молочный улун с корнем женьшеня</div>
+                        <div class="product__description">
+                            <div class="product__description-info">Придаёт энергии, улучшает настроение, стимулирует работу организма</div>
+                            <div class="product__description-row">
+                                <div class="product__weight">
+                                    <span>Масса чая: </span>
+                                    <span>3 гр.</span>
+                                </div>
+                                <div class="product__volume">
+                                    <span>Объём стакана: </span>
+                                    <span>350 мл.</span>
+                                </div>
+                            </div>
+                            <div class="product__aroma">
+                                <span>Аромат: </span>
+                                <span>сливочный, с тонкими женьшеневыми нотками</span>
+                            </div>
+                            <div class="product__taste">
+                                <span>Вкус: </span>
+                                <span>
+                                    легкий и благородный, с тонким сливочным<br>
+                                    послевкусием - станет для Вас открытием
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <a href="#" class="products__title">
-                    <span class="products__title-underline">чай зелёный с лимонной травой и мятой</span>
-                </a>
+                <div class="products__item">
+                    <div class="product">
+                        <div class="product__images">
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/2/1.png" alt="">
+                            </div>
+                            <div class="product__image">
+                                <img src="/img/products/2/2.png" alt="">
+                            </div>
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/2/3.png" alt="" style="margin-right: -30px">
+                            </div>
+                        </div>
+                        <div class="product__name">Чай зелёный с лимонной травой и мятой</div>
+                        <div class="product__description">
+                            <div class="product__description-info">Обладает противовирусным и успокаивающим эффектом, выводит токсины</div>
+                            <div class="product__description-row">
+                                <div class="product__weight">
+                                    <span>Масса чая: </span>
+                                    <span>3 гр.</span>
+                                </div>
+                                <div class="product__volume">
+                                    <span>Объём стакана: </span>
+                                    <span>350 мл.</span>
+                                </div>
+                            </div>
+                            <div class="product__aroma">
+                                <span>Аромат: </span>
+                                <span>лёгкий аромат лемонграсса и перечной мяты</span>
+                            </div>
+                            <div class="product__taste">
+                                <span>Вкус: </span>
+                                <span>освежающий, с тонкими нотами лимонной травы и мяты</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products__item">
+                    <div class="product">
+                        <div class="product__images">
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/3/1.png" alt="">
+                            </div>
+                            <div class="product__image">
+                                <img src="/img/products/3/2.png" alt="">
+                            </div>
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/3/3.png" alt="">
+                            </div>
+                        </div>
+                        <div class="product__name">Чай чёрный с османтусом душистым</div>
+                        <div class="product__description">
+                            <div class="product__description-info">Улучшает обмен веществ, способствует похудению</div>
+                            <div class="product__description-row">
+                                <div class="product__weight">
+                                    <span>Масса чая: </span>
+                                    <span>3 гр.</span>
+                                </div>
+                                <div class="product__volume">
+                                    <span>Объём стакана: </span>
+                                    <span>350 мл.</span>
+                                </div>
+                            </div>
+                            <div class="product__aroma">
+                                <span>Аромат: </span>
+                                <span>нежный</span>
+                            </div>
+                            <div class="product__taste">
+                                <span>Вкус: </span>
+                                <span>приятный, со сладковато-терпкими фруктовыми нотами</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products__item">
+                    <div class="product">
+                        <div class="product__images">
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/4/1.png" alt="">
+                            </div>
+                            <div class="product__image">
+                                <img src="/img/products/4/2.png" alt="">
+                            </div>
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/4/3.png" alt="" style="margin-right: -30px">
+                            </div>
+                        </div>
+                        <div class="product__name">Чай зелёный с женьшенем и жасмином</div>
+                        <div class="product__description">
+                            <div class="product__description-info">Является мощным антиоксидантом, укрепляет иммунитет, тонизирует организм</div>
+                            <div class="product__description-row">
+                                <div class="product__weight">
+                                    <span>Масса чая: </span>
+                                    <span>3 гр.</span>
+                                </div>
+                                <div class="product__volume">
+                                    <span>Объём стакана: </span>
+                                    <span>350 мл.</span>
+                                </div>
+                            </div>
+                            <div class="product__aroma">
+                                <span>Аромат: </span>
+                                <span>жасминовый и яркий</span>
+                            </div>
+                            <div class="product__taste">
+                                <span>Вкус: </span>
+                                <span>изысканный, с выраженными жасминовыми нотами</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products__item">
+                    <div class="product">
+                        <div class="product__images">
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/5/1.png" alt="">
+                            </div>
+                            <div class="product__image">
+                                <img src="/img/products/5/2.png" alt="">
+                            </div>
+                            <div class="product__image product__image--equal">
+                                <img src="/img/products/5/3.png" alt="">
+                            </div>
+                        </div>
+                        <div class="product__name">Чай чёрный с имбирём, мятой и горным сладким кристаллом</div>
+                        <div class="product__description">
+                            <div class="product__description-info">Обладает противовирусными и антибактериальными свойствами, низкокалориен</div>
+                            <div class="product__description-row">
+                                <div class="product__weight">
+                                    <span>Масса чая: </span>
+                                    <span>3 гр.</span>
+                                </div>
+                                <div class="product__volume">
+                                    <span>Объём стакана: </span>
+                                    <span>350 мл.</span>
+                                </div>
+                            </div>
+                            <div class="product__aroma">
+                                <span>Аромат: </span>
+                                <span>тонкий освежающий</span>
+                            </div>
+                            <div class="product__taste">
+                                <span>Вкус: </span>
+                                <span>деликатный</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="block-wrap">
-            <div class="collection-background">
-                <div class="collection">
-                    <a href="/img/collection.png" data-fancybox="collection">
-                        <img src="/img/collection.png" alt="" class="collection__img">
+        <div class="collections">
+            <div class="collections__wrap">
+                <div class="collections__image">
+                    <a href="/img/collections/1.png" data-fancybox="collections">
+                        <img src="/img/collections/1.png" alt="">
                     </a>
-                    <div class="collection__title">яркая коллекция из ярких вкусов</div>
+                    <p class="collections__caption">Мы постоянно развиваемся, эксперты подбирают новые, натуральные ингредиенты к чаю, для того, чтобы расширить наш ассортимент и удовлетворить вкусы как можно большего количества клиентов.</p>
                 </div>
-                <div class="collection-background__leaf">
-                    <img src="/img/leaf4.png" alt="">
+                <div class="collections__leaf1">
+                    <img src="/img/leafs/7.png" alt="">
                 </div>
             </div>
-    
-            <div class="interblock-leaf">
-                <img src="/img/leaf2.png" alt="">
-            </div>
-    
-            <div class="pack-collection">
-                <a href="/img/pack-collection.png" data-fancybox="pack-collection">
-                    <img src="/img/pack-collection.png" alt="" class="pack-collection__img">
-                </a>
+            <div class="collections__wrap">
+                <div class="collections__image">
+                    <a href="/img/collections/2.png" data-fancybox="collections">
+                        <img src="/img/collections/2.png" alt="">
+                    </a>
+                    <p class="collections__caption">
+                        Герметичная упаковка - 10 стаканов<br>
+                        (с крышками-заварниками) в пакете с Zip-замком.
+                    </p>
+                    <div class="collections__leaf2">
+                        <img src="/img/leafs/8.png" alt="">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="certs">
-            <img src="/img/certs/certs.png" alt="" class="certs__img" id="certs">
+        <div class="contact-form" id="order">
+            <p class="contact-form__text">
+                Работая с нашей продукцией Вы привлекаете постоянного клиента,<br>
+                ценящего удобство и качество
+            </p>
+
+            <form action="#" class="contact-form__form">
+                <label class="contact-form__label">
+                    <span class="contact-form__input-text">ФИО</span>
+                    <input type="text" class="contact-form__input" id="contact-form__name">
+                </label>
+                <label class="contact-form__label">
+                    <span class="contact-form__input-text">Конт.тел</span>
+                    <input type="text" class="contact-form__input" id="contact-form__phone">
+                </label>
+                <label class="contact-form__label">
+                    <span class="contact-form__input-text">Эл.п</span>
+                    <input type="text" class="contact-form__input" id="contact-form__email">
+                </label>
+
+                <input type="submit" value="Заказать" class="contact-form__submit">
+                <input type="hidden" id="recaptchaResponse">
+            </form>
         </div>
 
+        <div class="certs" id="certs">
+            <img src="/img/certs/1.png" alt="">
+            <img src="/img/certs/2.png" alt="">
+        </div>
+
+        <div class="certs-mobile">
+            <a href="/img/certs/1.png" data-fancybox="certs-mobile">
+                <img src="/img/certs/1.png" alt="">
+            </a>
+            <a href="/img/certs/2_1.png" data-fancybox="certs-mobile">
+                <img src="/img/certs/2_1.png" alt="">
+            </a>
+            <a href="/img/certs/2_2.png" data-fancybox="certs-mobile">
+                <img src="/img/certs/2_2.png" alt="">
+            </a>
+        </div>
+    
         <div class="footer-wrap">
             <div class="footer-roof">
                 <img src="/img/footer-roof.png" alt="">
             </div>
             <footer class="footer">
                 <div class="footer__content">
-                    <div class="footer__column1">
-                        <ul class="footer__nav">
-                            <li>
-                                <a href="#">Контакты</a>
-                            </li>
-                            <li>
-                                <a href="#">Где купить</a>
-                            </li>
-                            <li>
-                                <a href="#">Карта</a>
-                            </li>
-                            <li>
-                                <a href="#">Соц. сети</a>
-                            </li>
-                        </ul>
-                        <ul class="footer__social">
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/facebook.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/inst.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/mail.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/tg.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/viber.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/img/social/vk.png" alt="">
-                                </a>
-                            </li>        
-                        </ul>
-                    </div>
-                    <div class="footer__column2">
+                    <div class="footer__row">
+                        <div class="footer__social" id="contact">
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/facebook.png" alt="">
+                            </a>
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/inst.png" alt="">
+                            </a>
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/vk.png" alt="">
+                            </a>
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/mail.png" alt="">
+                            </a>
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/tg.png" alt="">
+                            </a>
+                            <a href="#" class="footer__social-link">
+                                <img src="/img/social/viber.png" alt="">
+                            </a>
+                        </div>
                         <div class="footer__logo">
                             <img src="/img/logo.png" alt="">
                         </div>
                     </div>
+                    <p class="footer__text">
+                        <span class="footer__heading">
+                            Общество с ограниченной ответственностью «АНИВА ТРЕЙД»<br>
+                            ООО «АНИВА ТРЕЙД»
+                        </span>
+                        Юридический адрес:<br>
+                        220101 Республика Беларусь, Минская область,<br>
+                        г. Минск, ул. Якубова, д. 10, пом. 17<br>
+                        Почтовый адрес:<br>
+                        222310, Республика Беларусь, Минская обл.,<br>
+                        г.Молодечно, ул. Партизанская, д. 6, оф. 89<br>
+                        УНП 193453127<br>
+                        р/с BY39OLMP30121000513870000933 – (BYN) текущий р/с в бел.рублях<br>
+                        р/с BY28OLMP30121000513870000840 – текущий р/с в долларах США<br>
+                        ОАО «Белгазпромбанк» BIC: OLMPBY2X 220121, г. Минск, ул. Притыцкого, 60/2<br>
+                        Директор: Русецкий Валерий Евгеньевич,<br>
+                        Действующий на основании Устава<br>
+                        тел. +375-33-667-82-55<br>
+                        e-mail: anivatrade@yandex.by
+                    </p>
                 </div>
                 <div class="footer__leaf">
-                    <img src="/img/leaf5.png" alt="">
+                    <img src="/img/leafs/footer-leaf.png" alt="">
                 </div>
             </footer>
         </div>
     </div>
 
+    <div class="mobile-menu">
+        <div class="mobile-menu__row">
+            <div class="mobile-menu__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu__content">
+            <ul class="mobile-menu__links">
+                <li class="mobile-menu__link">
+                    <a href="#about">О нас</a>
+                </li>
+                <li class="mobile-menu__link">
+                    <a href="#products">Ассортимент</a>
+                </li>
+                <li class="mobile-menu__link">
+                    <a href="#contact">Контакты</a>
+                </li>
+                <li class="mobile-menu__link">
+                    <a href="#order">Заказать</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="form-alert form-alert--error" id="form-alert__backend-error">
+        <div class="form-alert__row">
+            <div class="form-alert__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="form-alert__content">
+            <p>Ошибка!<br> Форма не была отправлена</p>
+        </div>
+    </div>
+
+    <div class="form-alert form-alert--error" id="form-alert__input-empty-error">
+        <div class="form-alert__row">
+            <div class="form-alert__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="form-alert__content">
+            <p>Ошибка!<br> Не все поля заполнены</p>
+        </div>
+    </div>
+
+    <div class="form-alert form-alert--error" id="form-alert__email-error">
+        <div class="form-alert__row">
+            <div class="form-alert__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="form-alert__content">
+            <p>Ошибка!<br>Неверный формат электронной почты</p>
+        </div>
+    </div>
+
+    <div class="form-alert form-alert--success" id="form-alert__success">
+        <div class="form-alert__row">
+            <div class="form-alert__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="form-alert__content">
+            <p>Спасибо!<br> С вами скоро свяжутся</p>
+        </div>
+    </div>
+
+    <div class="form-alert form-alert--wait" id="form-alert__wait">
+        <div class="form-alert__content">
+            <p>Идёт обработка</p>
+        </div>
+        <div class="form-alert__loader"></div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/jquery.fancybox.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/libs/fancybox/jquery.fancybox.min.js"></script>
+    <script src="/libs/jquery.maskedinput.min.js"></script>
 </body>
 </html>
