@@ -15,7 +15,7 @@ $(function() {
         }, {
             src: "/img/certs/2_1.png"
         }, {
-            src: "/img/certs/2_2.png"
+            src: "/img/certs/2_2.jpg"
         }], {
             loop: 0
         });
